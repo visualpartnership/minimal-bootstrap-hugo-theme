@@ -1,6 +1,46 @@
 {{- define "main" -}}
 
-<h1>{{ .Title | markdownify }}</h1>
-{{ .Content }}
+<section class="py-5">
+	<div class="container">
+		<div class="row gx-5 justify-content-center">
+			<div class="col-lg-8 col-xl-6">
+				<div class="text-center">
+					<h2 class="fw-bolder"> 🎨 Our Style </h2>
+					<p class="lead fw-normal text-muted mb-5">
+					Aquí te compartimos nuestras colaboraciones
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			{{ with .Site.Data.gallery }}
+      {{ range .collabs}}
+			<!-- Card body !-->
+			<div class="col-lg-6 mb-6 py-3">
+				<div class="card h-100 shadow border-0">
+					<img class="card-img-top" src="{{ .url }}" alt="...">
+					<div class="card-body">
+						<a class="text-decoration-none link-dark stretched-link" href="#!">
+							<h5 class="card-title mb-3"> {{ .title }} </h5></a>
+					</div>
+					<div class="card-footer bg-transparent border-top-0">
+						<div class="d-flex align-items-end justify-content-between">
+							<div class="d-flex align-items-center">
+								<div class="small">
+									<div class="fw-bold"> {{ .event }} </div>
+									<div class="text-muted">{{ .date_event }}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Card body !-->
+			{{ end }}
+			{{ end }}
+		</div>
+
+	</div>
+</section>
 
 {{- end -}}
