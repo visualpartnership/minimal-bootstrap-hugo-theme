@@ -6,7 +6,66 @@
     {{ $homepage = .Name }}
   {{ end }}
 {{ end }}
-<h1>{{ $homepage }}</h1>
+
+<main class="py-5 container">
+  <section class="text-center container">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 mx-auto">
+				<img src="https://res.cloudinary.com/carlogilmar/image/upload/v1602568635/visual_partner/Ilustracio%CC%81n_sin_ti%CC%81tulo_uungs6.png" width="100%"/>
+				<h1>
+					<span class="oswald bluevp">Visual</span>
+					<span class="pacifico redvp">Partner</span>
+					<span class="signika bluevp"><b>- SHIP🚀 </b></span>
+				</h1>
+        <p class="lead text-muted">
+					Visual Thinking + Software Development <br>
+					Registros Gráficos, Ilustraciones, y Talleres
+					<span class="pacifico">visualpartnership@gmail.com</span>
+				</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+{{ if .Site.Data.gallery.enable }}
+{{ with .Site.Data.gallery }}
+<section>
+  <div class="container-fluid px-0">
+    <div class="text-center">
+      <h4 class="widget-title">My Gallery</h4>
+    </div>
+    <div class="row no-gutters">
+      {{ range .gallery }}
+      <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+				{{ .image }}
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ with .Site.Data.gallery }}
+<section>
+  <div class="container-fluid px-0">
+    <div class="text-center">
+      <h4 class="widget-title">Events</h4>
+    </div>
+    <div class="row no-gutters">
+      {{ range .events}}
+      <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+				Evento : {{ .name }}
+				{{ .image }}
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ end }}
+
+
 
 {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
 {{ range $pages.ByPublishDate.Reverse }}
