@@ -7,7 +7,7 @@
   {{ end }}
 {{ end }}
 
-<main class="py-5 container">
+<main class="container">
   <section class="text-center container">
     <div class="row">
       <div class="col-lg-8 col-md-8 mx-auto">
@@ -20,52 +20,73 @@
         <p class="lead text-muted">
 					Visual Thinking + Software Development <br>
 					Registros Gráficos, Ilustraciones, y Talleres
-					<span class="pacifico">visualpartnership@gmail.com</span>
+					<span class="pacifico redvp">visualpartnership@gmail.com</span>
+				</p>
+				<p style="font-size: 25px;">
+				&nbsp; &nbsp; <a href="https://twitter.com/visual_partner"><i class="bi bi-twitter"></i></a>
+				&nbsp; &nbsp; <a href="https://www.instagram.com/visual_partner/"><i class="bi bi-instagram"></i></a>
+				&nbsp; &nbsp; <a href="https://facebook.com/visual-partnership"><i class="bi bi-facebook"></i></a>
+				&nbsp; &nbsp; <a href="https://github.com/visualpartnership"><i class="bi bi-github"></i></a>
 				</p>
       </div>
     </div>
   </section>
 </main>
 
-{{ if .Site.Data.gallery.enable }}
-{{ with .Site.Data.gallery }}
-<section>
-  <div class="container-fluid px-0">
-    <div class="text-center">
-      <h4 class="widget-title">My Gallery</h4>
-    </div>
-    <div class="row no-gutters">
-      {{ range .gallery }}
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-				{{ .image }}
-      </div>
-      {{ end }}
-    </div>
-  </div>
-</section>
-{{ end }}
+<div class="row text-center py-5">
+	<div class="col-lg-4">
+		<img src="https://visualpartnership.xyz/constellations/images/author.png" width="100%"/>
+		<h3 class="oswald">Open Gallery</h3>
+		<p><a class="btn btn-secondary" href="#">Ver »</a></p>
+	</div><!-- /.col-lg-4 -->
+	<div class="col-lg-4">
+		<img src="https://visualpartnership.xyz/constellations/images/author.png" width="100%"/>
+		<h3 class="oswald">Visual Constellations</h3>
+		<p><a class="btn btn-secondary" href="#">Ver »</a></p>
+	</div><!-- /.col-lg-4 -->
+	<div class="col-lg-4">
+		<img src="https://visualpartnership.xyz/constellations/images/author.png" width="100%"/>
+		<h3 class="oswald">Blog</h3>
+		<p><a class="btn btn-secondary" href="#">Ver »</a></p>
+	</div><!-- /.col-lg-4 -->
+</div>
 
-{{ with .Site.Data.gallery }}
-<section>
-  <div class="container-fluid px-0">
-    <div class="text-center">
-      <h4 class="widget-title">Events</h4>
-    </div>
-    <div class="row no-gutters">
-      {{ range .events}}
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-				Evento : {{ .name }}
-				{{ .image }}
-      </div>
-      {{ end }}
-    </div>
-  </div>
-</section>
-{{ end }}
-
-{{ end }}
-
-
+<div class="row text-center">
+	<div class="col-lg-6 py-3">
+		{{ with .Site.Data.gallery }}
+		<h3 class="oswald">Próximos Eventos</h3>
+		<ul class="list-group">
+			{{ range .events}}
+			<li class="list-group-item"> {{.name}}  </li>
+			{{ end }}
+		</ul>
+		{{ end }}
+	</div><!-- /.col-lg-6 -->
+	<div class="col-lg-6 py-3">
+  {{ with .Site.Data.gallery }}
+		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active" data-bs-interval="1000">
+					<img src="https://res.cloudinary.com/carlogilmar/image/upload/v1603070570/website/IMG_0022_n2loxd.png" class="d-block w-100" alt="...">
+				</div>
+  			{{ range .gallery }}
+				<div class="carousel-item" data-bs-interval="3000">
+					<img src="{{.image}}" class="d-block w-100" alt="...">
+				</div>
+  			{{ end }}
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+  {{ end }}
+	</div><!-- /.col-lg-6 -->
+</div>
 
 {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
 {{ range $pages.ByPublishDate.Reverse }}
